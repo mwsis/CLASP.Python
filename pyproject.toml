@@ -48,10 +48,24 @@ Repository = "https://github.com/synesissoftware/CLASP.Python"
 
 [project.optional-dependencies]
 dev = [
-	"pytest",
+	"pytest>=4.6,<5; python_version < '3'",
+	"pytest>=7; python_version >= '3.8'",
+	"ruff>=0.4.0; python_version >= '3.8'",
+]
+
+[dependency-groups]
+dev = [
+	"pytest>=7",
 	"ruff>=0.4.0",
 ]
 
+[tool.uv]
+environments = [
+	"python_version >= '3.8'",
+]
+
+[tool.uv.dependency-groups]
+dev = { requires-python = ">=3.8" }
 
 [tool.ruff]
 line-length = 76
